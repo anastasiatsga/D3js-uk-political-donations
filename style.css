@@ -19,19 +19,10 @@ li {
     display: inline;
 }
 h1:hover {
-    font-size: 250%;
+    font-size: 500%;
 }
-h2:hover {
-    font-size: 150%;
-}
-h3:hover {
-    font-size: 150%;
-}
-h4:hover {
-    font-size: 150%;
-}
-h5:hover {
-    font-size: 150%;
+id:hover {
+    font-size: 200%;
 }
 /* 	Information boxes for different chart layouts */
 /* Positioning */

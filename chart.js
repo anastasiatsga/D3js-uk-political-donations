@@ -366,7 +366,7 @@ function mouseout() {
 		}
 function search(d) {
 	var donor = d.donor;
-	open.window("https://www.google.com/search?q= " +donor);
+	open.window("https://www.google.com/search?q=" +donor);
 }
 
 $(document).ready(function() {

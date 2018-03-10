@@ -18,7 +18,7 @@ header, nav {
 li {
     display: inline;
 }
-:hover {
+h2:hover {
     font.size: 1em
 }
 /* 	Information boxes for different chart layouts */

@@ -92,7 +92,7 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-	        .on("click", searchG)
+	        .on("click", search)
 		.on("mouseout", mouseout);
 		// Alternative title based 'tooltips'
 		// node.append("title")
@@ -352,9 +352,9 @@ function mouseover(d, i) {
 	
 	}
 
-function searchG(d) {
+function search(d) {
 	var donor = d.donor;
-	open.window("https://www.google.com/search?q=" + donor);
+	open.window("https://www.google.com/search?q= " + donor);
 }
 
 function mouseout() {

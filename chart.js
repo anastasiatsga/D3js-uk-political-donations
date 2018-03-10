@@ -352,6 +352,11 @@ function mouseover(d, i) {
 	
 	}
 
+function searchG(d) {
+	var donor = d.donor;
+	open.window("https://www.google.com/search?q=" +donor);
+}
+
 function mouseout() {
 	// no more tooltips
 		var mosie = d3.select(this);
@@ -361,10 +366,7 @@ function mouseout() {
 		d3.select(".tooltip")
 			.style("display", "none");
 		}
-function searchG(d) {
-	var donor = d.donor;
-	open.window("https://www.google.com/search?q=" +donor);
-}
+
 
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {

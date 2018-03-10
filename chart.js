@@ -92,6 +92,7 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
+	        .on("click", searchG)
 		.on("mouseout", mouseout);
 		// Alternative title based 'tooltips'
 		// node.append("title")
@@ -306,6 +307,11 @@ function display(data) {
 		.size([w, h]);
 
 	return start();
+}
+
+function searchG(d){
+	var donor = d.donor;
+	window.open("https://google.com/search?=q " + donor);
 }
 
 function mouseover(d, i) {

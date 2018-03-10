@@ -22,7 +22,7 @@ h1:hover {
     font-size: 500%;
 }
 h2:hover {
-    font-size: 150%;
+    font-size: 200%;
 }
 p:hover {
     font-size: 150%;
@@ -34,6 +34,9 @@ h4:hover {
     font-size: 150%;
 }
 h5:hover {
+    font-size: 150%;
+}
+strong:hover {
     font-size: 150%;
 }
 

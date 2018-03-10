@@ -92,8 +92,8 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-	        .on("click", search)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)
+	 	.on("click", search);
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -352,10 +352,6 @@ function mouseover(d, i) {
 	
 	}
 
-function search(d) {
-	var donor = d.donor;
-	open.window("https://www.google.com/search?q= " + donor);
-}
 
 function mouseout() {
 	// no more tooltips
@@ -376,5 +372,10 @@ $(document).ready(function() {
     return d3.csv("data/7500up.csv", display);
 
 });
+
+function search(d) {
+	var donor = d.donor;
+	window.open("https://www.google.com/search?q= " + donor);
+}
 
 

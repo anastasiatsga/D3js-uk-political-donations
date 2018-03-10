@@ -361,7 +361,7 @@ function mouseout() {
 		d3.select(".tooltip")
 			.style("display", "none");
 		}
-function search(d) {
+function searchG(d) {
 	var donor = d.donor;
 	open.window("https://www.google.com/search?q=" +donor);
 }

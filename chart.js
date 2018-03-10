@@ -354,7 +354,7 @@ function mouseover(d, i) {
 
 function searchG(d) {
 	var donor = d.donor;
-	open.window("https://www.google.com/search?q=" +donor);
+	open.window("https://www.google.com/search?q=" + donor);
 }
 
 function mouseout() {

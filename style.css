@@ -18,8 +18,20 @@ header, nav {
 li {
     display: inline;
 }
+h1:hover {
+    font-size: 150%;
+}
 h2:hover {
-    font.size: 150px;
+    font-size: 150%;
+}
+h3:hover {
+    font-size: 150%;
+}
+h4:hover {
+    font-size: 150%;
+}
+h5:hover {
+    font-size: 150%;
 }
 /* 	Information boxes for different chart layouts */
 /* Positioning */

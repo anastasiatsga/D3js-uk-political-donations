@@ -309,10 +309,7 @@ function display(data) {
 	return start();
 }
 
-function searchG(d){
-	var donor = d.donor;
-	window.open("https://google.com/search?=q " + donor);
-}
+
 
 function mouseover(d, i) {
 	// tooltip popup

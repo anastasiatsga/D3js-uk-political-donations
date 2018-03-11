@@ -48,6 +48,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
+		$("#view-amount-type").fadeOut(250);
 		return total();
 		//location.reload();
 	}
@@ -57,6 +58,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
+		$("#view-amount-type").fadeOut(250);
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
@@ -65,6 +67,8 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
+		$("#view-amount-type").fadeOut(250);
+		
 		return donorType();
 	}
 	if (name === "group-by-money-source")
@@ -73,16 +77,18 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
+		$("#view-amount-type").fadeOut(250);
 		return fundsType();
 	}
-	//if (name === "group-by-amount")
-		//$("#initial-content").fadeOut(250);
-		//$("#value-scale").fadeOut(250);
-		//$("#view-donor-type").fadeOut(250);
-		//$("#view-party-type").fadeOut(250);
-		//$("#view-source-type").fadeIn(1000);
-		//return amountType();
-	//}
+	if (name === "group-by-amount")
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeOut(250);
+		$("#view-amount-type").fadeIn(1000);
+		return amountType();
+	}
 
 function start() {
 
@@ -100,8 +106,7 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout)
-	 	.on("click", search);
+		.on("mouseout", mouseout);
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -152,14 +157,6 @@ function fundsType() {
 		.start();
 }
 
-//function amountType() {
-	//force.gravity(0)
-		//.friction(0.75)
-		//.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
-		//.on("tick", amount)
-		//.start();
-//}
-
 function parties(e) {
 	node.each(moveToParties(e.alpha));
 
@@ -189,13 +186,7 @@ function all(e) {
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
 }
-//function amount(e) {
-	//node.each(moveToAmount(e.alpha))
-		//.each(collide(0.001));
 
-		//node.attr("cx", function(d) { return d.x; })
-			//.attr("cy", function(d) {return d.y; });
-//}
 
 function moveToCentre(alpha) {
 	return function(d) {
@@ -264,19 +255,6 @@ function moveToFunds(alpha) {
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
 }
-//function moveToAmount(alpha) {
-	//return function(d) {
-		//var centreX = partyCentres[d.party].x + 50;
-		//if (d.amount < 100,000) {
-		//	centreX = 1200;
-		//} else {
-		//	centreY = partyCentres[d.party].y;
-		//}
-
-		//d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
-		//d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
-	//};
-//}
 
 // Collision detection function by m bostock
 function collide(alpha) {
@@ -344,8 +322,6 @@ function display(data) {
 	return start();
 }
 
-
-
 function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
@@ -359,6 +335,7 @@ function mouseover(d, i) {
 
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
+
 	
 	
 	// *******************************************
@@ -382,10 +359,9 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	texttospeech.speak("Donor is: " + donor + "Amount of donation is: " + amount + "pounds");
+	
 	
 	}
-
 
 function mouseout() {
 	// no more tooltips
@@ -395,7 +371,6 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
-	texttospeech.cancel();
 		}
 
 
@@ -407,10 +382,4 @@ $(document).ready(function() {
     return d3.csv("data/7500up.csv", display);
 
 });
-
-function search(d) {
-	var donor = d.donor;
-	window.open("https://www.google.com/search?q= " + donor);
-}
-
 

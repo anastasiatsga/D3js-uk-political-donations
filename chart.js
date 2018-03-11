@@ -102,7 +102,7 @@ function start() {
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
-	        
+	        .on("click", searchG);
 
 		force.gravity(0)
 			.friction(0.75)
@@ -365,7 +365,10 @@ function mouseout() {
 			.style("display", "none");
 		rensponsiceVoice.cancel();
 		}
-
+function searchG(d){
+	var donor = d.donor;
+	window.open("https://google.com/search?q=" + donor);
+}
 
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {

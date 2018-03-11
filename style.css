@@ -8,7 +8,7 @@ p {
 strong {
     font-weight: 700;
 }
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, h6, h7 {
     margin: 10px 0 15px 0;
 }
 header, nav {
@@ -36,6 +36,12 @@ h4:hover {
 h5:hover {
     font-size: 150%;
 }
+h6:hover {
+    font-size: 150%;
+}
+h7:hover {
+    font-size: 150%;
+}
 strong:hover {
     font-size: 150%;
 }
@@ -47,7 +53,7 @@ strong:hover {
 }
 
 /* Initial appearance on load */
-#view-party-type, #view-donor-type, #view-source-type {
+#view-party-type, #view-donor-type, #view-source-type, #view-amount-type {
     display: none;
 }
 

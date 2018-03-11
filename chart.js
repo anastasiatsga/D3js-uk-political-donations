@@ -371,7 +371,7 @@ function searchG(d){
 }
 
 $(document).ready(function() {
-		d3.selectAll(".switch").on("click", function(d) {
+		d3.selectAll(".switch").on("click", function(d)){
       var id = d3.select(this).attr("id");
       return transition(id);
     });

@@ -324,7 +324,6 @@ function mouseover(d, i) {
 
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
-
 	
 	
 	// *******************************************
@@ -348,7 +347,7 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	
+	texttospeech.speak("Donor is: " + donor + "Amount of donation is: " + amount + "pounds");
 	
 	}
 
@@ -361,6 +360,7 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
+	texttospeech.cancel();
 		}
 
 

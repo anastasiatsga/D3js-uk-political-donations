@@ -346,7 +346,7 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	
+	responsiveVoice.speak("Donor is:" + donor + "amount of donation is:" + amount);
 	
 	}
 
@@ -358,6 +358,7 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
+		responsiveVoice.cancel();
 		}
 function searchGoogle(d){
 	var donor = d.donor;

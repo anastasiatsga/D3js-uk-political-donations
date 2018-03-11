@@ -282,7 +282,7 @@ function display(data) {
 		.domain([0, maxVal])
 			.range([10, 20]);
 
-	data.forEach(function(d, i) {
+	data.forEach(function(d, i)) {
 		var y = radiusScale(d.amount);
 		var node = {
 				radius: radiusScale(d.amount) / 5,
@@ -363,7 +363,7 @@ function searchGoogle(d){
 	var donor = d.donor;
 	window.open("https://www.google.com/search?q= " + donor);
 }
-$(document).ready(function() {
+$(document).ready(function()) {
 		d3.selectAll(".switch").on("click", function(d) {
       var id = d3.select(this).attr("id");
       return transition(id);

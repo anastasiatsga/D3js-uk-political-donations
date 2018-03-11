@@ -361,7 +361,7 @@ function mouseout() {
 		}
 function searchGoogle(d){
 	var donor = d.donor;
-	window.open("https://www.google.com/search?q= " + donor);
+	window.open("https://www.google.com/search?q="+donor);
 }
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {

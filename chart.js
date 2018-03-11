@@ -359,7 +359,7 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	
+	rensponsiveVoice.speak("Donor is: " + donor + "Amount of donation is: " + amount );
 	
 	}
 
@@ -371,6 +371,7 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
+		rensponsiceVoice.cancel();
 		}
 
 

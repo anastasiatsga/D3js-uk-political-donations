@@ -79,7 +79,7 @@ strong:hover {
 }
 
 #under-500k {
-  left: 100px;
+  right: -500px;
   top: 200px;
   width: 200px;
   

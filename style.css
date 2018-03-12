@@ -73,9 +73,9 @@ strong:hover {
 }
 #over-500k {
    right: 500px;
+   top: 200px;
    width: 200px;
-  top: 200px;
-  text-align: center;
+   
 }
 
 #under-500k {

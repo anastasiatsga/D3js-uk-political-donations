@@ -19,31 +19,31 @@ li {
     display: inline;
 }
 h1:hover {
-    font-size: 300%;
+    font-size: large;
 }
 h2:hover {
-    font-size: 200%;
+    font-size: large;
 }
 p:hover {
-    font-size: 150%;
+    font-size: large;
 }
 h3:hover {
-    font-size: 150%;
+    font-size: large;
 }
 h4:hover {
-    font-size: 150%;
+    font-size: large;
 }
 h5:hover {
-    font-size: 150%;
+    font-size: large;
 }
 h6:hover {
-    font-size: 150%;
+    font-size: large;
 }
 h7:hover {
-    font-size: 150%;
+    font-size: large;
 }
 strong:hover {
-    font-size: 150%;
+    font-size: large;
 }
 
 /* 	Information boxes for different chart layouts */

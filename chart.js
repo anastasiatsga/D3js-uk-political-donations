@@ -257,16 +257,13 @@ function moveToEnts(alpha) {
 
 function moveToAmountGroup(alpha) {
 	return function(d) {
-		var centreY = 135;
-		var centreX = 500;
+		var centreY = svgCentre.y;
 		
 		if (d.value >= 500000) {
-			centreY += 90;
-			centreX = 300;
+			centreX = svgCentre.x;	
 
 		} else if (d.value < 499999) {
-			centreY += (90*2);
-			centreX = 810;
+			centreX = svgCentre.x + 600;	
                 }
 		
 		

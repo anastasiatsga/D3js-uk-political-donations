@@ -157,7 +157,7 @@ function fundsType() {
 }
 
 function amountGroup(){
-  force.gravity(0)
+        force.gravity(0)
 		.friction(0.75)
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
 		.on("tick", amountGroup)
@@ -260,11 +260,11 @@ function moveToAmountGroup(alpha) {
 		var centreY = 135;
 		var centreX = 500;
 		
-		if (d.value >= 500000) {
+		if (d.amount >= 500000) {
 			centreY += 90;
 			centreX = 300;
 
-		} else if (d.value < 500000) {
+		} else if (d.amount < 499999) {
 			centreY += (90*2);
 			centreX = 810;
                 }

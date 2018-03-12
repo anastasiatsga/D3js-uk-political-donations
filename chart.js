@@ -260,11 +260,11 @@ function moveToAmountGroup(alpha) {
 		var centreY = 135;
 		var centreX = 500;
 		
-		if (d.amount >= 500000) {
+		if (d.value >= 500000) {
 			centreY += 90;
 			centreX = 300;
 
-		} else if (d.amount < 499999) {
+		} else if (d.value < 499999) {
 			centreY += (90*2);
 			centreX = 810;
                 }

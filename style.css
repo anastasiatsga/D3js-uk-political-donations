@@ -66,23 +66,29 @@ strong:hover {
     left: 650px;
     width: 272px;
 }
-#view-amount-type {
-  left: 650px;
-  right: 272px;
-  text-align: center;
+#view-donation-amount {
+    width: 300px;
+    
 }
-#under-500k {
-   top: 205px;
-    text-align: right;
-    right: 400px;
-   
+#above5mil {
+    top: 200px;
+    left: 460px;
 }
-
-#over-500k {
-  top: 530px;
-    text-align: right;
-    right: 400px;
-  
+#above1mil {
+    top: 340px;
+    left: 500px;
+}
+#above250k {
+    top: 480px;
+    left: 460px;
+}
+#above50k {
+    top: 620px;
+    left: 500px;
+}
+#below50k {
+    top: 780px;
+    left: 460px;
 }
 /*  Public or private funds view */
 

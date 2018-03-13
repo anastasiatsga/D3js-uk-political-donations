@@ -263,7 +263,7 @@ function moveToAmountGroup(alpha) {
 			centreY = svgCentre.y + 100;
 
 		} else if (d.value < 500000) {
-			centreY = svgCentre.y;
+			centreY = svgCentre.y- 50;
                 }
 		
 		

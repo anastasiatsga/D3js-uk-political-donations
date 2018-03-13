@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
 
 <head>
@@ -27,6 +28,10 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(ga, s);
     })();
+        
+    var clickSound = new Audio();
+    clickSound.src = "sound.mp3";
+    
     </script>
 </head>
 <!-- Add feature detection and noscript -->
@@ -37,16 +42,16 @@
         <h1>Who's funding the big three?</h1>
     </header>
     <nav role="navigation">
-         <ul onclick="sound.play()">
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
+        <ul>
+            <li><a href="#" role="button" onmousedown="clickSound.play()" class="pure-button switch" id="all-donations">All money</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
+            <li><a href="#" role="button" onmousedown="clickSound.play()" class="pure-button switch" id="group-by-money-source">The public's purse</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" role="button" onmousedown="clickSound.play()" class="pure-button switch" id="group-by-party">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" role="button" onmousedown="clickSound.play()" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-amount">Split by the amount of the donation</a>
+            <li><a href="#" role="button" onmousedown="clickSound.play()" class="pure-button switch" id="group-by-donation-amount">Split by donation amount</a>
             </li>
         </ul>
     </nav>
@@ -198,27 +203,27 @@
                         </p>
             </div>
         </div>
-      <div id="view-amount-type">
-         <h1>Split by the amount of donations</h1>
-         <div id="over-500k">
-            <strong>Donations over 500k</strong>
-            <p>Donations that succeed 500,000 pounds</p>
+        <div id="view-donation-amount">
+            <div id="above5mil">
+                <p><strong>&#163; 5,000,000</strong> or more</p>
+            </div>
+            <div id="above1mil">
+                <p>From <strong>&#163; 1,000,000</strong> to <strong>&#163; 4,999,999</strong></p>
+            </div>
+            <div id="above250k">
+                <p>From <strong>&#163; 250,000</strong> to <strong>&#163; 999,999</strong></p>
+            </div>
+            <div id="above50k">
+                <p>From <strong>&#163; 50,000</strong> to <strong>&#163; 249,999</strong></p>
+            </div>
+            <div id="below50k">
+                <p>Less than <strong>&#163; 50,000</strong></p>
+            </div>
         </div>
-        <div id="under-500k">
-            <strong>
-            Donations under 500k 
-            </strong>
-            <p>Donations that are under 500,000 pounds</p>
-        </div> 
-      </div>
     </div>
     <div id="chart"></div>
-    <script>
-    var sound = new Audio();
-    sound.src = "sound.mp3";
-    </script>
-    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
 
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
     window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')

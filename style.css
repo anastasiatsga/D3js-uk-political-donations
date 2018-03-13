@@ -71,14 +71,14 @@ strong:hover {
   right: 272px;
   text-align: center;
 }
-#over-500k {
+#under-500k {
    top: 205px;
     text-align: right;
     right: 400px;
    
 }
 
-#under-500k {
+#over-500k {
   top: 530px;
     text-align: right;
     right: 400px;

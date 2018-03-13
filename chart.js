@@ -263,7 +263,7 @@ function moveToAmountGroup(alpha) {
 			centreY = 100px;
 
 		} else if (d.value < 500000) {
-			centreX = 400px;
+			centreX = 300px;
                 }
 		
 		

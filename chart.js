@@ -1,3 +1,4 @@
+ //GLOBALS
 var w = 1000,h = 900;
 var padding = 2;
 var nodes = [];
@@ -20,7 +21,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#006400", "#BDB76B", "#8B008B"]);
+var fill = d3.scale.ordinal().range(["#006400", "#BDB76B", "#8B008B"]); //New colors
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -51,15 +52,15 @@ function transition(name) {
 		return total();
 		//location.reload();
 	}
-  if (name === "group-by-amount") {
+  	if (name === "group-by-amount") {
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
         	$("#view-amount-type").fadeIn(1000);
-		return amountGroup();
-  }
+		return amountGroup(); //New function for new button
+        }
 	if (name === "group-by-party") {
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
@@ -104,7 +105,7 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("click", searchGoogle)
+		.on("click", searchGoogle) //Google search on donors
 		.on("mouseout", mouseout);
 		// Alternative title based 'tooltips'
 		// node.append("title")
@@ -257,20 +258,22 @@ function moveToEnts(alpha) {
 
 function moveToAmountGroup(alpha) {
 	return function(d) {
-		var centreY = 135;
-		var centreX = 500;
-		
-		if (d.value > 500001) {
-			centreY += 90;
-			centreX = 300;
-
-		} else if (d.value = 500000) {
-			centreY += (90*2);
-			centreX = 810;
-                } else if (d.value < 500000){
-			centreY += (90*3);
-			centreX = 300;
-		}
+		var centreY = svgCentre.y + 75;
+			if (d.value <= 25001) {
+				centreX = svgCentre.x + 75;
+			} else if (d.value <= 50001) {
+				centreX = svgCentre.x + 55;
+			} else if (d.value <= 100001) {
+				centreX = svgCentre.x + 35;
+			} else  if (d.value <= 500001) {
+				centreX = svgCentre.x + 15;
+			} else  if (d.value <= 1000001) {
+				centreX = svgCentre.x - 5;
+			} else  if (d.value <= maxVal) {
+				centreX = svgCentre.x - 25;
+			} else {
+				centreX = svgCentre.x;
+			}
 		
 		
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;	

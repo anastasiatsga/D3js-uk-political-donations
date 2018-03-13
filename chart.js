@@ -21,8 +21,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-//I changed the colour of the balls from ["f02233", "fdbb30", "c9c945"] to:
-var fill = d3.scale.ordinal().range(["#006400", "#BDB76B", "#8B008B"]); 
+var fill = d3.scale.ordinal().range(["#006400", "#BDB76B", "#8B008B"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -49,7 +48,6 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-amount-type").fadeOut(250);
 		return total();
 		//location.reload();
 	}
@@ -59,7 +57,6 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
-		$("#view-amount-type").fadeOut(250);
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
@@ -68,29 +65,16 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
-		$("#view-amount-type").fadeOut(250);
 		return donorType();
 	}
-	if (name === "group-by-money-source") {
+	if (name === "group-by-money-source")
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
-		$("#view-amount-type").fadeOut(250);
 		return fundsType();
 	}
-	
-	if (name === "group-by-amount") {
-		$("#initial-content").fadeOut(250);
-		$("#value-scale").fadeOut(250);
-		$("#view-donor-type").fadeOut(250);
-		$("#view-party-type").fadeOut(250);
-		$("#view-source-type").fadeOut(250);
-		$("#view-amount-type").fadeIn(1000);
-		return amountsGroup();
-	}
-	
 
 function start() {
 
@@ -108,12 +92,11 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout)	
+		.on("mouseout", mouseout);
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
-		.on("click", gS);	//I activated the google search
-	
+
 		force.gravity(0)
 			.friction(0.75)
 			.charge(function(d) { return -Math.pow(d.radius, 2) / 3; })
@@ -158,14 +141,6 @@ function fundsType() {
 		.on("tick", types)
 		.start();
 }
-function amountsGroup() {
-	force.gravity(0)
-		.friction(0.8)
-		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
-		.on("tick", amounts)
-		.start()
-		.colourByParty();
-}
 
 function parties(e) {
 	node.each(moveToParties(e.alpha));
@@ -197,13 +172,6 @@ function all(e) {
 			.attr("cy", function(d) {return d.y; });
 }
 
-function amounts(e) {
-	node.each(moveToAmounts(e.alpha))
-		//.each(collide(0.001));
-
-		node.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) {return d.y; });
-}
 
 function moveToCentre(alpha) {
 	return function(d) {
@@ -273,29 +241,6 @@ function moveToFunds(alpha) {
 	};
 }
 
-function moveToAmounts(alpha) {
-	return function(d) {
-		var centreY = svgCentre.y;
-		if (d.value <= 25001) {
-				centreX = svgCentre.x + 600;	
-		        } else if (d.value <= 50001) {
-				centreX = svgCentre.x + 500;	
-			} else if (d.value <= 100001) {
-				centreX = svgCentre.x + 400;	
-			} else  if (d.value <= 500001) {
-				centreX = svgCentre.x + 300;	
-			} else  if (d.value <= 1000001) {
-				centreX = svgCentre.x + 200;	
-			} else  if (d.value <= maxVal) {
-				centreX = svgCentre.x ;
-			} else {
-				centreX = svgCentre.x; 
-			}
-		
-		d.x += (centreX - d.x) * (brake + 0.06) * alpha * 2.2;	
-		d.y += (centreY - d.y) * (brake + 0.06) * alpha * 2.2;	
-	};
-}
 // Collision detection function by m bostock
 function collide(alpha) {
   var quadtree = d3.geom.quadtree(nodes);
@@ -370,9 +315,8 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
-	responsiveVoice.speak("Donor " +donor + "Amount of donation: "+"  £" + amount);
-
 	
+
 
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
@@ -401,19 +345,17 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-	responsiveVoice.speak("Donor:     " + donor + "Amount of donation:     " + "  £" + amount);	//add voice
+	
 	}
 
 function mouseout() {
 	// no more tooltips
 		var mosie = d3.select(this);
-	
+
 		mosie.classed("active", false);
 
 		d3.select(".tooltip")
 			.style("display", "none");
-	
-	responsiveVoice.cancel();	//remove voice
 		}
 
 $(document).ready(function() {
@@ -424,9 +366,3 @@ $(document).ready(function() {
     return d3.csv("data/7500up.csv", display);
 
 });
-
-// I created a new function that opens a window in google for each 'click' to a ball
-function gS(d) {
-  var donor = d.donor;
-  window.open("https://www.google.com/search?q=" + donor);
-}

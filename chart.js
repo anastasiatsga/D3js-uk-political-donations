@@ -278,25 +278,28 @@ function moveToDonationAmountTiers(alpha) {
 		var centreY = 135;
 		var centreX = 500;
 		
-		if (d.value >= 5000000) {
+		if (d.value <= 25001) {
 			centreY += 90;
 			centreX = 300;
 
-		} else if (d.value>= 1000000) {
+		} else if (d.value<= 50001) {
 			centreY += (90*2);
 			centreX = 810;
 
-		} else if (d.value >= 250000) {
+		} else if (d.value <= 100001) {
 			centreY += (90*3);
 			centreX = 300;
 
-		} else  if (d.value >= 50000) {
+		} else  if (d.value <= 500001) {
 			centreY += (90*4);
 			centreX = 810;
 
-		} else  if (d.value >= 0) {
+		} else  if (d.value <= 1000001) {
 			centreY += (90*5);
 			centreX = 300;
+		} else if (d.value <= maxVal) {
+			centerY += (90*6);
+			centerX = 810;
 		}
 		
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;

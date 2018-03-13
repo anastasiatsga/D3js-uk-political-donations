@@ -48,7 +48,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-amount-type").fadeOut(250);
+		$("#view-donation-amount").fadeOut(250);
 		return total();
 		//location.reload();
 	}
@@ -57,8 +57,8 @@ function transition(name) {
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
+		$("#view-donation-amount").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
-		$("#view-amount-type").fadeOut(250);
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
@@ -66,28 +66,30 @@ function transition(name) {
 		$("#value-scale").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
+		$("#view-donation-amount").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
-		$("#view-amount-type").fadeOut(250);
 		return donorType();
 	}
-	if (name === "group-by-money-source")
+	if (name === "group-by-money-source") {
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
+		$("#view-donation-amount").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
-		$("#view-amount-type").fadeOut(250);
 		return fundsType();
 	}
-	if (name === "group-by-amount")
+	if (name === "group-by-donation-amount") {
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
-		$("#view-amount-type").fadeIn(1000);
-		return amountsType();
+		$("#view-donation-amount").fadeIn(1000);
+		return donationAmountGroup();
 	}
+}
+	
 
 function start() {
 
@@ -105,12 +107,11 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("click", searchGoogle)
+		.on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor); })
 		.on("mouseout", mouseout);
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
-	        
 
 		force.gravity(0)
 			.friction(0.75)
@@ -157,6 +158,14 @@ function fundsType() {
 		.start();
 }
 
+function donationAmountGroup() {
+	force.gravity(0)
+		.friction(0.75)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.on("tick", donationAmounts)
+		.start();
+}
+
 function parties(e) {
 	node.each(moveToParties(e.alpha));
 
@@ -173,6 +182,14 @@ function entities(e) {
 
 function types(e) {
 	node.each(moveToFunds(e.alpha));
+
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+}
+
+function donationAmounts(e) {
+	node.each(moveToDonationAmountTiers(e.alpha));
 
 
 		node.attr("cx", function(d) { return d.x; })
@@ -251,6 +268,37 @@ function moveToFunds(alpha) {
 			centreX = entityCentres[d.entity].x + 60;
 			centreY = 380;
 		}
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
+}
+
+function moveToDonationAmountTiers(alpha) {
+	return function(d) {
+		var centreY = 135;
+		var centreX = 500;
+		
+		if (d.value >= 5000000) {
+			centreY += 90;
+			centreX = 300;
+
+		} else if (d.value>= 1000000) {
+			centreY += (90*2);
+			centreX = 810;
+
+		} else if (d.value >= 250000) {
+			centreY += (90*3);
+			centreX = 300;
+
+		} else  if (d.value >= 50000) {
+			centreY += (90*4);
+			centreX = 810;
+
+		} else  if (d.value >= 0) {
+			centreY += (90*5);
+			centreX = 300;
+		}
+		
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
@@ -359,7 +407,8 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	responsiveVoice.speak("Donor is: " + donor + " and the amount of the donation is: " + amount + " pounds");
+	responsiveVoice.speak("The donor is: " +donor+ " and the amount of the donation is: " +amount);
+	
 	
 	}
 
@@ -371,12 +420,9 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
-		responsiveVoice.cancel();
+	responsiveVoice.cancel();
 		}
-function searchGoogle(d){
-	var donor = d.donor;
-	window.open("https://www.google.com/search?q="+donor);
-}
+
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
       var id = d3.select(this).attr("id");

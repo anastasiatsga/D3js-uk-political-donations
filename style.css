@@ -74,14 +74,14 @@ strong:hover {
 #over-500k {
    top: 205px;
     text-align: right;
-    right: 0;
+    right: 400px;
    
 }
 
 #under-500k {
   top: 530px;
     text-align: right;
-    right: 0;   
+    right: 400px;
   
 }
 /*  Public or private funds view */

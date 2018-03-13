@@ -257,18 +257,24 @@ function moveToEnts(alpha) {
 
 function moveToAmountGroup(alpha) {
 	return function(d) {
-		var centreY = svgCentre.y;
+		var centreY = 135;
+		var centreX = 500;
 		
-		if (d.value >= 500001) {
-			centreY = svgCentre.y + 300;
+		if (d.value > 500001) {
+			centreY += 90;
+			centreX = 300;
 
-		} else if (d.value < 500000) {
-			centreY = svgCentre.y + 300;
-                }
+		} else if (d.value = 500000) {
+			centreY += (90*2);
+			centreX = 810;
+                } else if (d.value < 500000){
+			centreY += (90*3);
+			centreX = 300;
+		}
 		
 		
-		d.x += (centreX - d.x) * (brake + 0.1) * alpha * 1.8;	
-		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.8;
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;	
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
 }
 

@@ -399,6 +399,7 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
+	
 	responsiveVoice.speak("The amount of the donation is:  " + amount + " and the donor is: " + donor);
 	
 	}
@@ -413,10 +414,7 @@ function mouseout() {
 			.style("display", "none");
 		responsiveVoice.cancel();
 		}
-function googleSearch(d){
-	var donor = d.donor;
-	window.open("https://google.com/seach?q=" +donor);
-}
+
 
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
@@ -426,4 +424,7 @@ $(document).ready(function() {
     return d3.csv("data/7500up.csv", display);
 
 });
+function googleSearch(d){
+	var donor = d.donor;
+	window.open("https://google.com/seach?q=" +donor);
 }

@@ -72,18 +72,16 @@ strong:hover {
   text-align: center;
 }
 #over-500k {
-   right: 500px;
-   top: 200px;
-   width: 200px;
+   top: 205px;
+    text-align: right;
+    right: 0;
    
 }
 
 #under-500k {
-  right: 100px;
-  top: 200px;
-  width: 200px;
-  
-  text-align: center;   
+  top: 530px;
+    text-align: right;
+    right: 0;   
   
 }
 /*  Public or private funds view */

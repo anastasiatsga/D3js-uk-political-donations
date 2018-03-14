@@ -111,26 +111,27 @@ li {
     width: 300px;
     
 }
-#above5mil {
-    top: 200px;
-    left: 460px;
+#above25k {
+    left: 120px;
+    top: 500px;
+    position: absolute;
 }
-#above1mil {
-    top: 340px;
-    left: 500px;
+#above500k {
+    left: 550px;
+    top: 500px;
+    position: absolute;
 }
-#above250k {
-    top: 480px;
-    left: 460px;
+#above5m {
+    left: 120px;
+    top: 140px;
+    position: absolute;
 }
-#above50k {
-    top: 620px;
-    left: 500px;
+#above20m {
+    left: 550px;
+    top: 140px;
+    position: absolute;
 }
-#below50k {
-    top: 780px;
-    left: 460px;
-}
+
 
 /* Value scale */
 

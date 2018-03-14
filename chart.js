@@ -398,7 +398,7 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	responsiveVoice.speak("The donor is: " +donor+ " and the amount of the donation is: " +amount + " pounds");
+	responsiveVoice.speak("The donor is: " +donor+ " and the amount of the donation is: " +amount + "pounds");
 	
 	
 	}
